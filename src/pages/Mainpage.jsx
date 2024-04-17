@@ -15,14 +15,15 @@ const Mainpage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inpVal);
     const todo = {
       id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
       title: inpVal,
       isCompleted: false,
     };
-    dispatch(todoActions.create(todo));
-    setInpVal("");
+    if (inpVal.length) {
+      dispatch(todoActions.create(todo));
+      setInpVal("");
+    }
   };
 
   const handleToggleComplete = (id) => {
